@@ -1,0 +1,10 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    uses: Solipath/Java-Maven-Solipath-Example/.github/workflows/_build.yml@main

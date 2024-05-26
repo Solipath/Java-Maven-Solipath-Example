@@ -1,0 +1,23 @@
+name: build Java
+
+on: 
+  workflow_call:
+  workflow_dispatch:
+jobs:
+  build:
+
+    runs-on: ${{matrix.os}}
+
+    strategy: 
+      matrix:
+        include:
+          - os: macos-latest
+            command: ./solipath mvn clean package
+          - os: ubuntu-latest
+            command: ./solipath mvn clean package
+          - os: windows-latest
+            command: .\solipath.bat mvn clean package
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run: ${{matrix.command}}
